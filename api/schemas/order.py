@@ -1,8 +1,8 @@
 from pydantic import BaseModel
 from datetime import datetime
 from typing import Optional, List
-from .order_detail import OrderDetail
-from .promotion import Promotion
+from order_detail import OrderDetail
+from promotion import Promotion
 
 class OrderBase(BaseModel):
     customer_id: int

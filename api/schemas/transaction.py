@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 from datetime import datetime
 from typing import Optional
-from .customer import Customer
+from customer import Customer
 
 class TransactionBase(BaseModel):
     card_number: str

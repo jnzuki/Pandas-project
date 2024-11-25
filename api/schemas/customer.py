@@ -1,8 +1,8 @@
 from typing import Optional, List
 from pydantic import BaseModel
-from .order import Order
-from .review import Review
-from .transaction import Transaction
+from order import Order
+from review import Review
+from transaction import Transaction
 
 class CustomerBase(BaseModel):
     address: str

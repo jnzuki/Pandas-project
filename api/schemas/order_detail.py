@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from typing import Optional
-from .menu_item import MenuItem
+from menu_item import MenuItem
 
 class OrderDetailBase(BaseModel):
     order_id: int

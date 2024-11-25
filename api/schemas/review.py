@@ -1,8 +1,8 @@
 from pydantic import BaseModel
 from datetime import datetime
 from typing import Optional
-from .menu_item import MenuItem
-from .customer import Customer
+from menu_item import MenuItem
+from customer import Customer
 
 class ReviewBase(BaseModel):
     rating: int

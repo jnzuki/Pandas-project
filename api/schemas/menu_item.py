@@ -1,7 +1,7 @@
 from typing import Optional, List
 from pydantic import BaseModel
-from .review import Review
-from .recipe import Recipe
+from review import Review
+from recipe import Recipe
 
 class MenuItemBase(BaseModel):
     name: str

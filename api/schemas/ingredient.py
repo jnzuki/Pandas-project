@@ -1,6 +1,6 @@
 from typing import Optional, List
 from pydantic import BaseModel
-from .recipe import Recipe
+from recipe import Recipe
 
 class IngredientBase(BaseModel):
     name: str

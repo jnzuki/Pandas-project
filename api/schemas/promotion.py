@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 from datetime import date
 from typing import Optional, List
-from .order import Order
+from order import Order
 
 class PromotionBase(BaseModel):
     code: str
