@@ -1,8 +1,8 @@
 from pydantic import BaseModel
 from datetime import datetime
 from typing import Optional, List
-from order_detail import OrderDetail
-from promotion import Promotion
+# from order_detail import OrderDetail
+# from promotion import Promotion
 
 class OrderBase(BaseModel):
     customer_id: int
@@ -22,11 +22,11 @@ class OrderUpdate(BaseModel):
 
 class Order(OrderBase):
     id: int
-    order_date: Optional[datetime] = None
-    total_amount: Optional[float] = None
-    status: Optional[str] = None
-    order_details: List[OrderDetail] = []
-    promotions: List[Promotion] = []
+    # order_date: Optional[datetime] = None
+    # total_amount: Optional[float] = None
+    # status: Optional[str] = None
+    # order_details: List[OrderDetail] = []
+    # promotions: List[Promotion] = []
 
     class Config:
         orm_mode = True

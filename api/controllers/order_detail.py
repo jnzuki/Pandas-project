@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 from fastapi import HTTPException, status, Response
-from models import order_detail as model
+from ..models import order_detail as model
 from sqlalchemy.exc import SQLAlchemyError
 
 

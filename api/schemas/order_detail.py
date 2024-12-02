@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from typing import Optional
-from menu_item import MenuItem
+# from menu_item import MenuItem
 
 class OrderDetailBase(BaseModel):
     order_id: int
@@ -19,7 +19,7 @@ class OrderDetailUpdate(BaseModel):
 
 class OrderDetail(OrderDetailBase):
     id: int
-    menu_item: Optional[MenuItem] = None  # Linking MenuItem to this order detail
+    # menu_item: Optional[MenuItem] = None  # Linking MenuItem to this order detail
 
     class Config:
         orm_mode = True
