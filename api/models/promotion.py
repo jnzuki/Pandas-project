@@ -7,8 +7,9 @@ class Promotion(Base):
 
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     code = Column(String(50), unique=True, nullable=False)
+    
     discount_amount = Column(DECIMAL(10, 2), nullable=False)
     expiration_date = Column(Date, nullable=False)
     is_active = Column(Boolean, default=True)
 
-    orders = relationship("Order", secondary="order_promotions", back_populates="promotions")
+    order = relationship("Order", back_populates="promotions")  # Links back to Order

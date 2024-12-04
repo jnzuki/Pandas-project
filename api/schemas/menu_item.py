@@ -1,7 +1,7 @@
 from typing import Optional, List
 from pydantic import BaseModel
-from review import Review
-from recipe import Recipe
+# from .review import Review      # Testing bs
+# from .recipe import Recipe
 
 class MenuItemBase(BaseModel):
     name: str
@@ -24,8 +24,8 @@ class MenuItemUpdate(BaseModel):
 
 class MenuItem(MenuItemBase):
     id: int
-    reviews: Optional[List[Review]] = None
-    recipes: Optional[List[Recipe]] = None
+    # reviews: Optional[List[Review]] = None
+    # recipes: Optional[List[Recipe]] = None
 
     class Config:
         orm_mode = True

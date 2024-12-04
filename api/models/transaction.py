@@ -14,4 +14,4 @@ class Transaction(Base):
     amount = Column(DECIMAL(10, 2), nullable=False)
     balance_after_transaction = Column(DECIMAL(10, 2), nullable=False)
 
-    customer = relationship("Customer", back_populates="transactions")
+    customer = relationship("Customer", foreign_keys=[customer_id])  # Links back to Customer

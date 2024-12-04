@@ -10,15 +10,17 @@ class OrderBase(BaseModel):
     status: Optional[str] = "pending"
     total_amount: Optional[float] = 0.0
     delivery_type: str
+    promotion_id: Optional[int] = None
 
 class OrderCreate(OrderBase):
     pass
 
 class OrderUpdate(BaseModel):
-    customer_id: Optional[int] = None
+    # customer_id: Optional[int] = None
     status: Optional[str] = None
     total_amount: Optional[float] = None
     delivery_type: Optional[str] = None
+    promotion_id: Optional[int] = None
 
 class Order(OrderBase):
     id: int

@@ -1,6 +1,6 @@
 from typing import Optional, List
 from pydantic import BaseModel
-from recipe import Recipe
+# from recipe import Recipe
 
 class IngredientBase(BaseModel):
     name: str
@@ -17,7 +17,7 @@ class IngredientUpdate(BaseModel):
 
 class Ingredient(IngredientBase):
     id: int
-    recipes: Optional[List[Recipe]] = None
+    # recipes: Optional[List[Recipe]] = None
 
     class Config:
         orm_mode = True

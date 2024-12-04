@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 from datetime import date
 from typing import Optional, List
-from order import Order
+# from order import Order
 
 class PromotionBase(BaseModel):
     code: str
@@ -25,7 +25,7 @@ class Promotion(PromotionBase):
         orm_mode = True
 
 class PromotionWithOrders(Promotion):
-    orders: List["Order"]
+    # orders: List["Order"]
 
     class Config:
         orm_mode = True

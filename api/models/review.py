@@ -13,5 +13,5 @@ class Review(Base):
     review_text = Column(Text, nullable=True)
     review_date = Column(DateTime, default=datetime.now())
 
-    customer = relationship("Customer", back_populates="reviews")
-    menu_item = relationship("MenuItem", back_populates="reviews")
+    customer = relationship("Customer", foreign_keys=[customer_id])  # Links back to Customer
+    menu_item = relationship("MenuItem", foreign_key=[menu_item_id])  # Links back to MenuItem

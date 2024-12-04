@@ -1,14 +1,14 @@
 from sqlalchemy.orm import Session
 from fastapi import HTTPException, status, Response
-from models import customer as model
+from ..models import customer as model
 from sqlalchemy.exc import SQLAlchemyError
 
 
 def create(db: Session, request):
     new_customer = model.Customer(
-        name=request.name,
-        phone=request.phone,
-        address=request.address
+        address=request.address,
+        card_number=request.card_number,
+        balance=request.balance
     )
 
     try:

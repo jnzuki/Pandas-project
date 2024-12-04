@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 from fastapi import HTTPException, status, Response
-from models import menu_item as model
+from ..models import menu_item as model
 from sqlalchemy.exc import SQLAlchemyError
 
 

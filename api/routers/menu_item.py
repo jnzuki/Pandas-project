@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-from controllers import menu_item as controller
-from schemas import menu_item as schema
-from dependencies.database import get_db
+from ..controllers import menu_item as controller
+from ..schemas import menu_item as schema
+from ..dependencies.database import get_db
 
 router = APIRouter(
     tags=["Menu Item"],

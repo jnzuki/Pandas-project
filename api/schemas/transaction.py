@@ -9,6 +9,8 @@ class TransactionBase(BaseModel):
     transaction_date: Optional[datetime] = None
     amount: float
     balance_after_transaction: float
+    customer_id: int
+    
 
 class TransactionCreate(TransactionBase):
     pass

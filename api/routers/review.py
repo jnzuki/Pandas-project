@@ -1,14 +1,13 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-from controllers import review as controller
-from schemas import review as schema
-from dependencies.database import get_db
+from ..controllers import review as controller
+from ..schemas import review as schema
+from ..dependencies.database import get_db
 
 router = APIRouter(
     tags=["Review"],
     prefix="/reviews"
 )
-
 
 @router.post("/", response_model=schema.Review)
 def create(request: schema.ReviewCreate, db: Session = Depends(get_db)):

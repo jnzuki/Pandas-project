@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-from controllers import promotion as controller
-from schemas import promotion as schema
-from dependencies.database import get_db
+from ..controllers import promotion as controller
+from ..schemas import promotion as schema
+from ..dependencies.database import get_db
 
 router = APIRouter(
     tags=["Promotion"],
