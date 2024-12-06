@@ -24,7 +24,7 @@ class TransactionUpdate(BaseModel):
 
 class Transaction(TransactionBase):
     id: int
-    customer: Customer
+    # customer: Customer
 
     class Config:
         orm_mode = True

@@ -11,5 +11,5 @@ class OrderDetail(Base):
     quantity = Column(Integer, nullable=False, default=1)
     subtotal = Column(DECIMAL(10, 2), nullable=False)  # (price × quantity)
 
-    order = relationship("Order", foreign_key=[order_id])  # Links back to Order
-    menu_item = relationship("MenuItem", foreign_key=[menu_item_id])  # Links back to MenuItem
+    order = relationship("Order", foreign_keys=[order_id])  # Links back to Order
+    menu_item = relationship("MenuItem", foreign_keys=[menu_item_id])  # Links back to MenuItem

@@ -11,6 +11,9 @@ class Recipe(Base):
     quantity = Column(DECIMAL(10, 2), nullable=False)
     resource_id = Column(Integer, ForeignKey("resources.id"), nullable=False)  # Links to Resource
 
-    menu_item = relationship("MenuItem", foreign_key=[menu_item_id])  # Links back to MenuItem
-    ingredient = relationship("Ingredient", foreign_key=[ingredient_id])  # Links back to Ingredient
-    resources = relationship("Resource", foreign_key=[resource_id])  # One-to-Many with Resource
+    resource = relationship("Resource", back_populates="recipes") 
+
+    menu_item = relationship("MenuItem", foreign_keys=[menu_item_id])  # Links back to MenuItem
+    ingredient = relationship("Ingredient", foreign_keys=[ingredient_id])  # Links back to Ingredient
+    resources = relationship("Resource", foreign_keys=[resource_id])  # One-to-Many with Resource
+    
