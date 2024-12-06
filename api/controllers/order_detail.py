@@ -9,7 +9,8 @@ def create(db: Session, request):
         order_id=request.order_id,
         menu_item_id=request.menu_item_id,
         quantity=request.quantity,
-        price=request.price
+        subtotal=request.subtotal
+        # price=request.price
     )
 
     try:

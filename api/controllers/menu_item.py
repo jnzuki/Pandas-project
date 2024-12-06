@@ -11,9 +11,10 @@ def create(db: Session, request):
         price=request.price,
         category=request.category,
         calories=request.calories,
-        is_spicy=request.is_spicy,
-        is_vegetarian=request.is_vegetarian,
-        is_kids_friendly=request.is_kids_friendly
+        # is_spicy=request.is_spicy,
+        # is_vegetarian=request.is_vegetarian,
+        # is_kids_friendly=request.is_kids_friendly
+        is_available=request.is_available
     )
 
     try:

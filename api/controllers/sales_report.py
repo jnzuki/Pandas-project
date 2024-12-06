@@ -7,9 +7,10 @@ from sqlalchemy.exc import SQLAlchemyError
 def create(db: Session, request):
     new_report = model.SalesReport(
         date=request.date,
-        total_sales=request.total_sales,
-        total_orders=request.total_orders,
-        total_items_sold=request.total_items_sold
+        # total_sales=request.total_sales,
+        total_revenue=request.total_revenue,
+        total_orders=request.total_orders
+        # total_items_sold=request.total_items_sold
     )
 
     try:

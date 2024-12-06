@@ -6,12 +6,16 @@ from sqlalchemy.exc import SQLAlchemyError
 
 def create(db: Session, request):
     new_recipe = model.Recipe(
-        name=request.name,
-        ingredients=request.ingredients,
-        instructions=request.instructions,
-        prep_time=request.prep_time,
-        cook_time=request.cook_time,
-        serving_size=request.serving_size
+        # name=request.name,
+        # ingredients=request.ingredients,
+        # instructions=request.instructions,
+        # prep_time=request.prep_time,
+        # cook_time=request.cook_time,
+        # serving_size=request.serving_size
+        menu_item_id=request.menu_item_id,
+        ingredient_id=request.ingredient_id,
+        quantity=request.quantity,
+        resource_id=request.resource_id
     )
 
     try:

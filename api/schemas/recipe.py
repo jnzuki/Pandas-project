@@ -5,6 +5,7 @@ class RecipeBase(BaseModel):
     menu_item_id: int
     ingredient_id: int
     quantity: float
+    resource_id: int
 
 class RecipeCreate(RecipeBase):
     pass

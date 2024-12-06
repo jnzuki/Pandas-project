@@ -8,9 +8,12 @@ def create(db: Session, request):
     new_order = model.Order(
         customer_id=request.customer_id,
         order_date=request.order_date,
-        total_price=request.total_price,
+        # total_price=request.total_price,
+        total_amount=request.total_amount,
+        promotion_id=request.promotion_id,
         status=request.status,
-        delivery_address=request.delivery_address,
+        # delivery_address=request.delivery_address,
+        delivery_type=request.delivery_type,
         is_takeout=request.is_takeout
     )
 

@@ -6,10 +6,14 @@ from sqlalchemy.exc import SQLAlchemyError
 
 def create(db: Session, request):
     new_transaction = model.Transaction(
-        order_id=request.order_id,
-        payment_method=request.payment_method,
+        # order_id=request.order_id,
+        customer_id=request.customer_id,
+        card_number=request.card_number,
+        transaction_type=request.transaction_type,
+        # payment_method=request.payment_method,
         amount=request.amount,
-        transaction_date=request.transaction_date
+        transaction_date=request.transaction_date,
+        balance_after_transaction=request.balance_after_transaction
     )
 
     try:

@@ -7,10 +7,14 @@ from sqlalchemy.exc import SQLAlchemyError
 def create(db: Session, request):
     new_review = model.Review(
         customer_id=request.customer_id,
-        dish_id=request.dish_id,
+        # dish_id=request.dish_id,
+        menu_item_id=request.menu_item_id,
+
         rating=request.rating,
-        comment=request.comment,
-        created_at=request.created_at
+        # comment=request.comment,
+        # created_at=request.created_at
+        review_date=request.review_date,
+        review_text=request.review_text
     )
 
     try:
