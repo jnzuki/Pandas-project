@@ -13,7 +13,7 @@ class Order(Base):
     status = Column(String(50), nullable=False, default="pending")
     total_amount = Column(DECIMAL(10, 2), nullable=False, default=0.0)
     delivery_type = Column(String(50), nullable=False)  # e.x takeout or delivery
-    is_takeout = Column(Boolean, nullable=False, default=False)
+    # is_takeout = Column(Boolean, nullable=False, default=False)
 
     
 

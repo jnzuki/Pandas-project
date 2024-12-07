@@ -13,8 +13,8 @@ def create(db: Session, request):
         promotion_id=request.promotion_id,
         status=request.status,
         # delivery_address=request.delivery_address,
-        delivery_type=request.delivery_type,
-        is_takeout=request.is_takeout
+        delivery_type=request.delivery_type
+        # is_takeout=request.is_takeout
     )
 
     try:

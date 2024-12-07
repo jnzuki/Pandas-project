@@ -11,7 +11,7 @@ class OrderBase(BaseModel):
     total_amount: Optional[float] = 0.0
     delivery_type: str
     promotion_id: Optional[int] = None
-    is_takeout: Optional[bool] = False
+    # is_takeout: Optional[bool] = False
 
 class OrderCreate(OrderBase):
     pass
