@@ -7,7 +7,7 @@ class Ingredient(Base):
 
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     name = Column(String(100), unique=True, nullable=False)
-    stock_level = Column(Integer, nullable=False, default=0)
+    quantity = Column(Integer, nullable=False, default=0)
     unit = Column(String(50), nullable=True)
 
     recipes = relationship("Recipe", back_populates="ingredient")  # Many-to-Many with MenuItem

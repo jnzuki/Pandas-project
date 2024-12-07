@@ -4,7 +4,7 @@ from pydantic import BaseModel
 
 class IngredientBase(BaseModel):
     name: str
-    stock_level: int
+    quantity: int
     unit: Optional[str] = None
 
 class IngredientCreate(IngredientBase):
@@ -12,7 +12,7 @@ class IngredientCreate(IngredientBase):
 
 class IngredientUpdate(BaseModel):
     name: Optional[str] = None
-    stock_level: Optional[int] = None
+    quantity: Optional[int] = None
     unit: Optional[str] = None
 
 class Ingredient(IngredientBase):
