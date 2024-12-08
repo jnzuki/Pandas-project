@@ -1,7 +1,14 @@
 from sqlalchemy.orm import Session
 from fastapi import HTTPException, status, Response
+from ..models.sales_report import SalesReport
+
+
 from ..models import sales_report as model
+from ..models import order as order_model
+
 from sqlalchemy.exc import SQLAlchemyError
+from sqlalchemy import func
+
 
 
 def create(db: Session, request):
@@ -24,13 +31,34 @@ def create(db: Session, request):
     return new_report
 
 
-def read_all(db: Session):
+def get_daily_revenue(db: Session, order_date: str):
     try:
-        reports = db.query(model.SalesReport).all()
-    except SQLAlchemyError as e:
-        error = str(e.__dict__['orig'])
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=error)
-    return reports
+        total_revenue = db.query(func.sum(order_model.Order.total_amount)).filter(
+            func.date(order_model.Order.order_date) == order_date
+        ).scalar()
+
+        if total_revenue is None:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail="No revenue found for the specified date!"
+            )
+
+        sales_report = SalesReport(
+            date=order_date,
+            total_revenue=total_revenue
+        )
+
+        db.add(sales_report)
+        db.commit()
+        db.refresh(sales_report)
+
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=str(e)
+        )
+
+    return {"total_revenue": total_revenue}
 
 
 def read_one(db: Session, report_id: int):

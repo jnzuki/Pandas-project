@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Session
 from fastapi import HTTPException, status, Response
 from ..models import order as model
+from ..models.sales_report import SalesReport
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy import func
 
@@ -105,6 +106,29 @@ def update(db: Session, order_id: int, request):
         error = str(e.__dict__['orig'])
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=error)
     return order.first()
+
+
+def get_total_revenue_by_date(db: Session, order_date: str):
+    try:
+        # sum of total_amount
+        total_revenue = db.query(func.sum(model.Order.total_amount)).filter(
+            func.date(model.Order.order_date) == order_date
+        ).scalar()
+
+        if total_revenue is None:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail="No revenue found for the specified date!"
+            )
+
+    except SQLAlchemyError as e:
+        error = str(e.__dict__['orig'])
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=error
+        )
+    
+    return {"total_revenue": total_revenue}
 
 
 def delete(db: Session, order_id: int):

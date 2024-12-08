@@ -15,9 +15,9 @@ def create(request: schema.SalesReportCreate, db: Session = Depends(get_db)):
     return controller.create(db=db, request=request)
 
 
-@router.get("/", response_model=list[schema.SalesReport])
-def read_all(db: Session = Depends(get_db)):
-    return controller.read_all(db)
+@router.get("/revenue/{order_date}", response_model=dict)
+def get_revenue_by_date(order_date: str, db: Session = Depends(get_db)):
+    return controller.get_daily_revenue(db=db, order_date=order_date)
 
 
 @router.get("/{report_id}", response_model=schema.SalesReport)

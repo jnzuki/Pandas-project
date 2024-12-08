@@ -10,7 +10,7 @@ def load_routes(app):
     app.include_router(recipe.router)
     app.include_router(ingredient.router)
     app.include_router(sales_report.router)
-    app.include_router(transaction.router)
+    # app.include_router(transaction.router)
 
     
 

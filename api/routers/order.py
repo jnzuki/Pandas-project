@@ -36,6 +36,10 @@ def read_orders_by_date_range(
 ):
     return controller.read_by_date_range(db=db, start_date=start_date, end_date=end_date)
 
+@router.get("/revenue/{order_date}", response_model=dict)
+def get_revenue_by_date(order_date: str, db: Session = Depends(get_db)):
+    return controller.get_total_revenue_by_date(db=db, order_date=order_date)
+
 @router.put("/{order_id}", response_model=schema.Order)
 def update(order_id: int, request: schema.OrderUpdate, db: Session = Depends(get_db)):
     return controller.update(db=db, request=request, order_id=order_id)
