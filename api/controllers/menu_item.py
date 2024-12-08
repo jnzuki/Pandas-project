@@ -34,6 +34,17 @@ def read_all(db: Session):
     except SQLAlchemyError as e:
         error = str(e.__dict__['orig'])
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=error)
+        
+    return menu_items
+
+def read_by_category(db: Session, category: str):
+    try:
+        menu_items = db.query(model.MenuItem).filter(model.MenuItem.category == category).all()
+        if not menu_items:
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="No menu items found for this category!")
+    except SQLAlchemyError as e:
+        error = str(e.__dict__['orig'])
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=error)
     return menu_items
 
 

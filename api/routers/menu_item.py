@@ -19,6 +19,10 @@ def create(request: schema.MenuItemCreate, db: Session = Depends(get_db)):
 def read_all(db: Session = Depends(get_db)):
     return controller.read_all(db)
 
+@router.get("/category/{category}", response_model=list[schema.MenuItem])
+def read_by_category(category: str, db: Session = Depends(get_db)):
+    return controller.read_by_category(db=db, category=category)
+
 
 @router.get("/{menu_item_id}", response_model=schema.MenuItem)
 def read_one(menu_item_id: int, db: Session = Depends(get_db)):
