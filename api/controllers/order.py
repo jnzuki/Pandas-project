@@ -2,6 +2,8 @@ from sqlalchemy.orm import Session
 from fastapi import HTTPException, status, Response
 from ..models import order as model
 from sqlalchemy.exc import SQLAlchemyError
+from sqlalchemy import func
+
 
 
 def create(db: Session, request):
@@ -47,6 +49,49 @@ def read_one(db: Session, order_id: int):
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=error)
     return order
 
+def read_by_date(db: Session, order_date: str):
+    try:
+        orders = db.query(model.Order).filter(
+            func.date(model.Order.order_date) == order_date
+        ).all()
+
+        if not orders:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail="No orders found for this date!"
+            )
+    
+    except SQLAlchemyError as e:
+        error = str(e.__dict__['orig'])
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=error
+        )
+    
+    return orders
+
+def read_by_date_range(db: Session, start_date: str, end_date: str):
+    try:
+        # Query orders within the date range (inclusive of both start and end dates)
+        orders = db.query(model.Order).filter(
+            func.date(model.Order.order_date) >= start_date,
+            func.date(model.Order.order_date) <= end_date
+        ).all()
+
+        if not orders:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail="No orders found for this date range!"
+            )
+    
+    except SQLAlchemyError as e:
+        error = str(e.__dict__['orig'])
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=error
+        )
+    
+    return orders
 
 def update(db: Session, order_id: int, request):
     try:

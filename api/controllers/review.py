@@ -48,6 +48,20 @@ def read_one(db: Session, review_id: int):
     return review
 
 
+def get_reviews_by_menu_item(db: Session, menu_item_id: int):
+    try:
+        reviews = db.query(model.Review).filter(model.Review.menu_item_id == menu_item_id).all()
+        
+        if not reviews:
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="No reviews found for this menu item!")
+
+    except SQLAlchemyError as e:
+        error = str(e.__dict__['orig'])
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=error)
+    
+    return reviews
+
+
 def update(db: Session, review_id: int, request):
     try:
         review = db.query(model.Review).filter(model.Review.id == review_id)
