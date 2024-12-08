@@ -13,3 +13,11 @@ class OrderDetail(Base):
 
     order = relationship("Order", foreign_keys=[order_id])  # Links back to Order
     menu_item = relationship("MenuItem", foreign_keys=[menu_item_id])  # Links back to MenuItem
+
+    def calculate_ingredients_needed(self, db_session):
+        from .recipe import Recipe
+        recipes = db_session.query(Recipe).filter_by(menu_item_id=self.menu_item_id).all()
+        ingredient_requirements = {}
+        for recipe in recipes:
+            ingredient_requirements[recipe.ingredient_id] = recipe.quantity * self.quantity
+        return ingredient_requirements

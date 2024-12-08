@@ -10,4 +10,9 @@ class Ingredient(Base):
     quantity = Column(Integer, nullable=False, default=0)
     unit = Column(String(50), nullable=True)
 
-    recipes = relationship("Recipe", back_populates="ingredient")  # Many-to-Many with MenuItem
+    recipes = relationship("Recipe", back_populates="ingredient")  # Many-to-Many with MenuItem'
+
+    def reduce_quantity(self, amount: int):
+        if self.quantity < amount:
+            raise ValueError(f"Not enough stock for ingredient {self.name}. Required: {amount}, Available: {self.quantity}")
+        self.quantity -= amount

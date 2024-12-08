@@ -17,7 +17,6 @@ class IngredientUpdate(BaseModel):
 
 class Ingredient(IngredientBase):
     id: int
-    # recipes: Optional[List[Recipe]] = None
 
     class Config:
         orm_mode = True

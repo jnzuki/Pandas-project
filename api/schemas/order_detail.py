@@ -19,7 +19,6 @@ class OrderDetailUpdate(BaseModel):
 
 class OrderDetail(OrderDetailBase):
     id: int
-    # menu_item: Optional[MenuItem] = None  # Linking MenuItem to this order detail
 
     class Config:
         orm_mode = True

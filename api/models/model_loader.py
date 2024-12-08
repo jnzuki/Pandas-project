@@ -1,7 +1,7 @@
 # from . import customer, menu_item, ingredient, recipe, order, order_detail, promotion, review, sales_report, transaction
 
 # from ..dependencies.database import engine
-from . import customer, menu_item, ingredient, recipe, order, order_detail, promotion, review, sales_report, transaction, resources
+from . import customer, menu_item, ingredient, recipe, order, order_detail, promotion, review, sales_report, transaction
 
 from ..dependencies.database import engine
 
@@ -29,4 +29,3 @@ def index():
     review.Base.metadata.create_all(engine)
     sales_report.Base.metadata.create_all(engine)
     transaction.Base.metadata.create_all(engine)
-    resources.Base.metadata.create_all(engine)
