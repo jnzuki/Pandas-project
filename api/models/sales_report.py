@@ -9,7 +9,6 @@ class SalesReport(Base):
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     date = Column(Date, unique=True, index=True)
     total_revenue = Column(Integer)
-    # total_orders = Column(Integer, nullable=False, default=0)
 
     def __repr__(self):
         return f"<SalesReport(id={self.id}, date={self.date}, total_revenue={self.total_revenue})>"

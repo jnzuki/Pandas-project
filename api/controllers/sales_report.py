@@ -14,10 +14,7 @@ from sqlalchemy import func
 def create(db: Session, request):
     new_report = model.SalesReport(
         date=request.date,
-        # total_sales=request.total_sales,
-        total_revenue=request.total_revenue,
-        total_orders=request.total_orders
-        # total_items_sold=request.total_items_sold
+        total_revenue=request.total_revenue 
     )
 
     try:
@@ -59,6 +56,7 @@ def get_daily_revenue(db: Session, order_date: str):
         )
 
     return {"total_revenue": total_revenue}
+
 
 
 def read_one(db: Session, report_id: int):
